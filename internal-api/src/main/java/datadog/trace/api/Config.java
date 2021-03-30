@@ -12,6 +12,7 @@ import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_CLIENT_ERROR_STATUSE
 import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_CLIENT_SPLIT_BY_DOMAIN;
 import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_CLIENT_TAG_QUERY_STRING;
 import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_SERVER_ERROR_STATUSES;
+import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_SERVER_ROUTE_BASED_NAMING;
 import static datadog.trace.api.ConfigDefaults.DEFAULT_HTTP_SERVER_TAG_QUERY_STRING;
 import static datadog.trace.api.ConfigDefaults.DEFAULT_INTEGRATIONS_ENABLED;
 import static datadog.trace.api.ConfigDefaults.DEFAULT_JMX_FETCH_ENABLED;
@@ -116,6 +117,7 @@ import static datadog.trace.api.config.TraceInstrumentationConfig.DB_CLIENT_HOST
 import static datadog.trace.api.config.TraceInstrumentationConfig.GRPC_IGNORED_OUTBOUND_METHODS;
 import static datadog.trace.api.config.TraceInstrumentationConfig.HTTP_CLIENT_HOST_SPLIT_BY_DOMAIN;
 import static datadog.trace.api.config.TraceInstrumentationConfig.HTTP_CLIENT_TAG_QUERY_STRING;
+import static datadog.trace.api.config.TraceInstrumentationConfig.HTTP_SERVER_ROUTE_BASED_NAMING;
 import static datadog.trace.api.config.TraceInstrumentationConfig.HTTP_SERVER_TAG_QUERY_STRING;
 import static datadog.trace.api.config.TraceInstrumentationConfig.HYSTRIX_MEASURED_ENABLED;
 import static datadog.trace.api.config.TraceInstrumentationConfig.HYSTRIX_TAGS_ENABLED;
@@ -267,6 +269,7 @@ public class Config {
   private final BitSet httpServerErrorStatuses;
   private final BitSet httpClientErrorStatuses;
   private final boolean httpServerTagQueryString;
+  private final boolean httpServerRouteBasedNaming;
   private final boolean httpClientTagQueryString;
   private final boolean httpClientSplitByDomain;
   private final boolean dbClientSplitByInstance;
@@ -528,6 +531,10 @@ public class Config {
     httpServerTagQueryString =
         configProvider.getBoolean(
             HTTP_SERVER_TAG_QUERY_STRING, DEFAULT_HTTP_SERVER_TAG_QUERY_STRING);
+
+    httpServerRouteBasedNaming =
+        configProvider.getBoolean(
+            HTTP_SERVER_ROUTE_BASED_NAMING, DEFAULT_HTTP_SERVER_ROUTE_BASED_NAMING);
 
     httpClientTagQueryString =
         configProvider.getBoolean(
@@ -841,6 +848,10 @@ public class Config {
 
   public boolean isHttpServerTagQueryString() {
     return httpServerTagQueryString;
+  }
+
+  public boolean isHttpServerRouteBasedNaming() {
+    return httpServerRouteBasedNaming;
   }
 
   public boolean isHttpClientTagQueryString() {
@@ -1639,6 +1650,8 @@ public class Config {
         + httpClientErrorStatuses
         + ", httpServerTagQueryString="
         + httpServerTagQueryString
+        + ", httpServerRouteBasedNaming="
+        + httpServerRouteBasedNaming
         + ", httpClientTagQueryString="
         + httpClientTagQueryString
         + ", httpClientSplitByDomain="
