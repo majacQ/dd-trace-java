@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.grizzly.client;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
 import static net.bytebuddy.matcher.ElementMatchers.isPublic;
@@ -22,7 +22,7 @@ public final class ClientRequestInstrumentation extends Instrumenter.Tracing {
   }
 
   static final ElementMatcher<ClassLoader> CLASS_LOADER_MATCHER =
-      hasClassesNamed("com.ning.http.client.AsyncHandler");
+      hasClassNamed("com.ning.http.client.AsyncHandler");
 
   @Override
   public Map<String, String> contextStore() {

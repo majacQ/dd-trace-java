@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.grizzlyhttp232;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
 import static net.bytebuddy.matcher.ElementMatchers.hasSuperClass;
@@ -25,7 +25,7 @@ public final class FilterInstrumentation extends Instrumenter.Tracing {
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
-    return hasClassesNamed("org.glassfish.grizzly.filterchain.BaseFilter");
+    return hasClassNamed("org.glassfish.grizzly.filterchain.BaseFilter");
   }
 
   @Override

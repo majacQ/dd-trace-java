@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.jaxrs2;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
@@ -32,7 +32,7 @@ public class ContainerRequestFilterInstrumentation extends Instrumenter.Tracing 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("javax.ws.rs.container.ContainerRequestFilter");
+    return hasClassNamed("javax.ws.rs.container.ContainerRequestFilter");
   }
 
   @Override

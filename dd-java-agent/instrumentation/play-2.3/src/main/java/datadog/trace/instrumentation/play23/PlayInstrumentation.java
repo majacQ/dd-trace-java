@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.play23;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
@@ -24,7 +24,7 @@ public final class PlayInstrumentation extends Instrumenter.Tracing {
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("play.api.mvc.Action");
+    return hasClassNamed("play.api.mvc.Action");
   }
 
   @Override

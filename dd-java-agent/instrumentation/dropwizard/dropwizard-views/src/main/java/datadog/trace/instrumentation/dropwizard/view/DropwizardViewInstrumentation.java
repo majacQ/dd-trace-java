@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.dropwizard.view;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.namedOneOf;
@@ -34,7 +34,7 @@ public final class DropwizardViewInstrumentation extends Instrumenter.Tracing {
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("io.dropwizard.views.ViewRenderer");
+    return hasClassNamed("io.dropwizard.views.ViewRenderer");
   }
 
   @Override

@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.datanucleus;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.namedOneOf;
@@ -31,7 +31,7 @@ public class ExecutionContextInstrumentation extends Instrumenter.Tracing {
   }
 
   private final ElementMatcher<ClassLoader> CLASS_LOADER_MATCHER =
-      hasClassesNamed("org.datanucleus.ExecutionContext");
+      hasClassNamed("org.datanucleus.ExecutionContext");
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {

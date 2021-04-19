@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.couchbase.client;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.extendsClass;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.nameStartsWith;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
@@ -31,7 +31,7 @@ public class CouchbaseNetworkInstrumentation extends Instrumenter.Tracing {
   }
 
   static final ElementMatcher<ClassLoader> CLASS_LOADER_MATCHER =
-      hasClassesNamed("com.couchbase.client.core.message.CouchbaseRequest");
+      hasClassNamed("com.couchbase.client.core.message.CouchbaseRequest");
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {

@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.jdbc;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 
@@ -16,7 +16,7 @@ public class DB2PreparedStatementInstrumentation extends AbstractPreparedStateme
   }
 
   public static final ElementMatcher<ClassLoader> CLASS_LOADER_MATCHER =
-      hasClassesNamed("com.ibm.db2.jcc.DB2PreparedStatement");
+      hasClassNamed("com.ibm.db2.jcc.DB2PreparedStatement");
 
   @Override
   public ElementMatcher<? super TypeDescription> typeMatcher() {

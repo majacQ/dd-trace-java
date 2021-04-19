@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.jdbc;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.nameStartsWith;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
@@ -30,7 +30,7 @@ public final class DriverInstrumentation extends Instrumenter.Tracing {
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
-    return hasClassesNamed("java.sql.Driver");
+    return hasClassNamed("java.sql.Driver");
   }
 
   @Override

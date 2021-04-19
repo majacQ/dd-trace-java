@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.jms;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.bootstrap.instrumentation.api.AgentTracer.activateSpan;
@@ -36,7 +36,7 @@ public final class JMSMessageListenerInstrumentation extends Instrumenter.Tracin
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("javax.jms.MessageListener");
+    return hasClassNamed("javax.jms.MessageListener");
   }
 
   @Override

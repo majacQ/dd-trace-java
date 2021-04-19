@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.hibernate.core.v4_3;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.hasInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
@@ -33,7 +33,7 @@ public class SessionInstrumentation extends Instrumenter.Tracing {
   }
 
   static final ElementMatcher<ClassLoader> CLASS_LOADER_MATCHER =
-      hasClassesNamed("org.hibernate.Session");
+      hasClassNamed("org.hibernate.Session");
 
   @Override
   public Map<String, String> contextStore() {

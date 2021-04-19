@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.apachehttpasyncclient;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.namedOneOf;
@@ -36,7 +36,7 @@ public class ApacheHttpAsyncClientInstrumentation extends Instrumenter.Tracing {
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("org.apache.http.nio.client.HttpAsyncClient");
+    return hasClassNamed("org.apache.http.nio.client.HttpAsyncClient");
   }
 
   @Override

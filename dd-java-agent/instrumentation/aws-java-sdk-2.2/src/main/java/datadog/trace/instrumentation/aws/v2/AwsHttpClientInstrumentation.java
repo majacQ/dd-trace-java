@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.aws.v2;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.extendsClass;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.nameStartsWith;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
@@ -30,7 +30,7 @@ public final class AwsHttpClientInstrumentation extends AbstractAwsClientInstrum
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed(
+    return hasClassNamed(
         "software.amazon.awssdk.core.internal.http.pipeline.stages.MakeHttpRequestStage");
   }
 

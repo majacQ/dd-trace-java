@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.akka.concurrent;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.bootstrap.instrumentation.api.AgentTracer.activeScope;
 import static datadog.trace.bootstrap.instrumentation.java.concurrent.AdviceUtils.endTaskScope;
@@ -39,7 +39,7 @@ public final class AkkaForkJoinExecutorTaskInstrumentation extends Instrumenter.
     // prevents Runnable from being instrumented unless this
     // instrumentation would take effect (unless something else
     // instruments it).
-    return hasClassesNamed("akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask");
+    return hasClassNamed("akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask");
   }
 
   @Override

@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.servlet.filter;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.implementsInterface;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static datadog.trace.bootstrap.instrumentation.api.AgentTracer.activateSpan;
@@ -37,8 +37,8 @@ public final class FilterInstrumentation extends Instrumenter.Tracing {
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    // return hasClassesNamed("javax.servlet.Filter"); // Not available in 2.2
-    return hasClassesNamed("javax.servlet.http.HttpServlet");
+    // return hasClassNamed("javax.servlet.Filter"); // Not available in 2.2
+    return hasClassNamed("javax.servlet.http.HttpServlet");
   }
 
   @Override

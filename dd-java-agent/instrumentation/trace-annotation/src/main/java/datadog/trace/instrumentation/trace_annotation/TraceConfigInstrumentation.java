@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.trace_annotation;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.safeHasSuperType;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static net.bytebuddy.matcher.ElementMatchers.isConstructor;
@@ -132,7 +132,7 @@ public class TraceConfigInstrumentation implements Instrumenter {
     @Override
     public ElementMatcher<ClassLoader> classLoaderMatcher() {
       // Optimization for expensive typeMatcher.
-      return hasClassesNamed(className);
+      return hasClassNamed(className);
     }
 
     @Override

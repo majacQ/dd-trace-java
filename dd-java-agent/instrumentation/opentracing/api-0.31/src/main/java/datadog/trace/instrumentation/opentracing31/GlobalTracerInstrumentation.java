@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.opentracing31;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
 import static net.bytebuddy.matcher.ElementMatchers.isTypeInitializer;
@@ -30,7 +30,7 @@ public class GlobalTracerInstrumentation extends Instrumenter.Tracing {
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
-    return not(hasClassesNamed("io.opentracing.tag.Tag"));
+    return not(hasClassNamed("io.opentracing.tag.Tag"));
   }
 
   @Override

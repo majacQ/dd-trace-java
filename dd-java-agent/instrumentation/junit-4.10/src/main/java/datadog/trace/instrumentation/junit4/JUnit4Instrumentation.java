@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.junit4;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.extendsClass;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static net.bytebuddy.matcher.ElementMatchers.takesArgument;
@@ -32,7 +32,7 @@ public class JUnit4Instrumentation extends Instrumenter.Tracing {
 
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
-    return hasClassesNamed("org.junit.runner.Runner");
+    return hasClassNamed("org.junit.runner.Runner");
   }
 
   @Override

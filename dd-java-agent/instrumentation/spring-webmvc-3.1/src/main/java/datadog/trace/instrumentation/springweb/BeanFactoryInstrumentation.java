@@ -1,6 +1,6 @@
 package datadog.trace.instrumentation.springweb;
 
-import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassesNamed;
+import static datadog.trace.agent.tooling.ClassLoaderMatcher.hasClassNamed;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.DDElementMatchers.extendsClass;
 import static datadog.trace.agent.tooling.bytebuddy.matcher.NameMatchers.named;
 import static java.util.Collections.singletonMap;
@@ -35,7 +35,7 @@ public class BeanFactoryInstrumentation extends Instrumenter.Tracing {
   @Override
   public ElementMatcher<ClassLoader> classLoaderMatcher() {
     // Optimization for expensive typeMatcher.
-    return hasClassesNamed("org.springframework.beans.factory.support.AbstractBeanFactory");
+    return hasClassNamed("org.springframework.beans.factory.support.AbstractBeanFactory");
   }
 
   @Override
